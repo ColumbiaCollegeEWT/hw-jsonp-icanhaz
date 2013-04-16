@@ -51,6 +51,11 @@
   TODO: Create an ICanHaz template to display each tweet.
   The template must display the text of the tweet, the image
   of the tweet author, and the date of the tweet.
+
+  TIP: Complete the JavaScript first, to the point where
+  you can inspect the tweet data objects. You can then match
+  up placeholders in this ICanHaz template to the property
+  names of the tweet data objects.
 -->
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -83,8 +88,9 @@
       // Store the current tweet in our 'tweet' variable
       tweet = json_data.results[i];
 
-      // log the tweet to inspect its contents
-      // REMOVE THIS LINE BEFORE YOU TURN IN THE ASSIGNMENT
+      // Log the tweet to inspect its contents. Be sure to look
+      // through the object so you know which properties to match
+      // up to your ICanHaz template above.
       console.log(tweet);
 
       // TODO: Using your ICanHaz template from above, create
