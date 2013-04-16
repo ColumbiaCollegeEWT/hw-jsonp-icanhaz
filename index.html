@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<head>
+  <title>Twitter &amp; JSONP</title>
+
+  <style type="text/css">
+    body {
+      background: #e1e1e1;
+    }
+
+    #wrapper {
+      width: 70%;
+      padding: 40px 5%;
+      margin: 0 auto;
+      box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+      background: #fff;
+    }
+
+    .clearfix:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    /* TODO: Add styles for the display of the tweets. */
+
+    /*
+    TODO: Add media queries for 480px, 768px, and 1024px.
+    These styles can be whatever you like, but be sure something
+    noticeable changes at each breakpoint.
+    */
+  </style>
+</head>
+<body>
+
+<div id="wrapper">
+  <h1>Tweets!</h1>
+
+  <input type="search" id="search">
+
+  <button id="show-tweets">Search The Tweets!</button>
+
+  <!--
+    TODO: Display all tweets in this element.
+    Be sure to remove all tweets before adding new ones.
+  -->
+  <section id="tweets-list"></section>
+</div>
+
+<!--
+  TODO: Create an ICanHaz template to display each tweet.
+  The template must display the text of the tweet, the image
+  of the tweet author, and the date of the tweet.
+-->
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://raw.github.com/HenrikJoreteg/ICanHaz.js/master/ICanHaz.min.js"></script>
+<script>
+  // Button click handler
+  $('#show-tweets').on('click', function() {
+    // TODO: Make sure the user entered a search term. If they did not, do not execute the AJAX request.
+
+      // TODO: Store the search term in a variable named 'query'
+
+      // Make a JSONP request to Twitter, concatenating the search term in to the request
+      $.ajax({
+        url: 'http://search.twitter.com/search.json?q=' + query + '&rpp=20&include_entities=false&result_type=mixed',
+        dataType: 'jsonp',
+        type: 'GET',
+        jsonpCallback: 'display_tweets'
+      });
+  });
+
+  // Function to display the tweets
+  var display_tweets = function(json_data) {
+    // Declare a variable to hold a single tweet, named 'tweet'
+    var tweet;
+
+    // TODO: Remove all the currently displayed tweets.
+
+    // Loop through each tweet
+    for (var i = 0; i < json_data.results.length; i++) {
+      // Store the current tweet in our 'tweet' variable
+      tweet = json_data.results[i];
+
+      // log the tweet to inspect its contents
+      // REMOVE THIS LINE BEFORE YOU TURN IN THE ASSIGNMENT
+      console.log(tweet);
+
+      // TODO: Using your ICanHaz template from above, create
+      // the markup for the tweet.
+
+      // TODO: Add the tweet to the 'tweets-list' element.
+    }
+  };
+</script>
+
+</body>
+</html>
